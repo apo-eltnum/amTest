@@ -31,77 +31,80 @@ export default function Modal({showModal,setShowModal}){
     }
 
     return(
-        <div id="myModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close" onClick={()=> setShowModal(!showModal)}>&times;</span>
+        <div id="myModal" className="modal">
+  <div className="modal-content">
+    <div className="modal-header">
+      <span className="close" onClick={()=> setShowModal(!showModal)}>&times;</span>
       <h2 className="card-info-header">Agregar nueva Persona</h2>
     </div>
-    <div class="modal-body">
-        <label htmlFor="name">Nombre</label>
-        <input name="name" placeholder="Nombre" onChange={onChangeData} value={name}/>
-        <label htmlFor="dateOfBirth">Cumpleaños</label>
-        <input name="dateOfBirth" type="date" onChange={onChangeData} value={dateOfBirth}/>
+    <div className="modal-body">
+        <div className="input-div">
+            <label htmlFor="name" className="label">NOMBRE</label>
+            <input name="name" placeholder="Nombre" onChange={onChangeData} value={name}/>
+        </div>
+        <div className="input-div">
+            <label htmlFor="dateOfBirth" className="label">CUMPLEAÑOS</label>
+            <input name="dateOfBirth" type="date" onChange={onChangeData} value={dateOfBirth}/>
+        </div>
         <br/>
-        <label htmlFor="eyeColour">Color de Ojos</label>
-        <input name="eyeColour" placeholder="Color de Ojos" onChange={onChangeData} value={eyeColour}/>
-        <label htmlFor="hairColour">Color de Pelo</label>
-        <input name="hairColour" placeholder="Color de Pelo" onChange={onChangeData} value={hairColour}/>
+        <div className="input-div">
+            <label htmlFor="eyeColour" className="label">COLOR DE OJOS</label>
+            <input name="eyeColour" placeholder="Color de Ojos" onChange={onChangeData} value={eyeColour}/>
+        </div>
+        <div className="input-div">
+            <label htmlFor="hairColour" className="label">COLOR DE PELO</label>
+            <input name="hairColour" placeholder="Color de Pelo" onChange={onChangeData} value={hairColour}/>
+        </div>
         <br/>
-        <div>
-            <legend>Género</legend>
-            <div className="radio">
-            <label>
-                <input name="gender"
-                type="radio"
-                value="male"
-                checked={gender === "male"}
-                onChange={onChangeData}
-                />
-                Hombre
-            </label>
-            </div>
-            <div className="radio">
-            <label>
-                <input name="gender"
-                type="radio"
-                value="female"
-                checked={gender === "female"}
-                onChange={onChangeData}
-                />
-                Mujer
-            </label>
+        <div className="input-div">
+            <legend className="label">GÉNERO</legend>
+            <div className="radio-div">
+                <label className="radio-label">
+                    <input name="gender"
+                    type="radio"
+                    value="male"
+                    checked={gender === "male"}
+                    onChange={onChangeData}
+                    />
+                    HOMBRE
+                </label>
+                <label className="radio-label">
+                    <input name="gender"
+                    type="radio"
+                    value="female"
+                    checked={gender === "female"}
+                    onChange={onChangeData}
+                    />
+                    MUJER
+                </label>
             </div>
         </div>
-
-        <div>
-            <legend>Posición</legend>
-            <div className="radio">
-            <label>
-                <input name="personType"
-                type="radio"
-                value="student"
-                checked={personType === "student"}
-                onChange={onChangeType}
-                />
-                Estudiante
-            </label>
-            </div>
-            <div className="radio">
-            <label>
-                <input name="personType"
-                type="radio"
-                value="staff"
-                checked={personType === "staff"}
-                onChange={onChangeType}
-                />
-                Staff
-            </label>
+        <div className="input-div">
+            <legend className="label">POSICIÓN</legend>
+            <div className="radio-div">
+                <label className="radio-label">
+                    <input name="personType"
+                    type="radio"
+                    value="student"
+                    checked={personType === "student"}
+                    onChange={onChangeType}
+                    />
+                    ESTUDIANTE
+                </label>
+                <label className="radio-label">
+                    <input name="personType"
+                    type="radio"
+                    value="staff"
+                    checked={personType === "staff"}
+                    onChange={onChangeType}
+                    />
+                    STAFF
+                </label>
             </div>
         </div>
 
     </div>
-    <div class="modal-footer">
+    <div className="modal-footer">
       <button className="btn">Guardar</button>
     </div>
   </div>

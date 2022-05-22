@@ -1,10 +1,22 @@
-import React,{useState} from "react";
-import students from '../../data/hp-students.json';
+import axios from "axios";
+import React,{useState,useEffect} from "react";
 import Card from "../elements/Card";
 import Modal from "../elements/Modal";
 import OptionsBar from "../elements/OptionsBar";
 export default function Home(){
     const [showModal,setShowModal] = useState(false);
+    const [list,setList] = useState([]);
+
+    useEffect(()=>{
+        async function getAllData(){
+            await axios.get('http://localhost:5000/characters').then(res=>{
+                setList(res.data);
+            })
+        }
+
+        getAllData();
+    },[])
+
 
     const modValidate = showModal ? <Modal showModal={showModal} setShowModal={setShowModal}/> : null;
     
@@ -18,11 +30,15 @@ export default function Home(){
                 <button className="btn">STAFF</button>
             </div>
             <div className="card-container">
-                {students.map((student)=>{
-                    return(
-                        <Card element={student}/>
-                    )
-                })}
+                {
+                    list.length!==0 ?
+                    list.map((character)=>{
+                        return(
+                            <Card element={character}/>
+                        )
+                    })
+                    :<div>Loading...</div>
+                }
             </div>
             {modValidate}
         </div>
