@@ -6,37 +6,37 @@ import OptionsBar from "../elements/OptionsBar";
 export default function Home(){
     const [showModal,setShowModal] = useState(false);
     const [list,setList] = useState([]);
-    const [filterOpc, setFilterOpc] = useState(0)
+    const [update, setUpdate] = useState(false);
     useEffect(()=>{
         async function getAllData(){
-            await axios.get('http://localhost:5000/characters').then(res=>{
+            await axios.get(`${process.env.REACT_APP_API_URI}characters`).then(res=>{
                 setList(res.data);
             })
         }
         getAllData();
-    },[filterOpc])
+    },[update])
 
 
     async function getStudents(){
-        await axios.get('http://localhost:5000/characters?hogwartsStudent=true&hogwartsStaff=false').then(res=>{
+        await axios.get(`${process.env.REACT_APP_API_URI}characters?hogwartsStudent=true&hogwartsStaff=false`).then(res=>{
             setList(res.data);
         })
     }
 
     async function getStaff(){
-        await axios.get('http://localhost:5000/characters?hogwartsStudent=false&hogwartsStaff=true').then(res=>{
+        await axios.get(`${process.env.REACT_APP_API_URI}characters?hogwartsStudent=false&hogwartsStaff=true`).then(res=>{
             setList(res.data);
         })
     }
 
     async function getNotAlive(){
-        await axios.get('http://localhost:5000/characters?alive=false').then(res=>{
+        await axios.get(`${process.env.REACT_APP_API_URI}characters?alive=false`).then(res=>{
             setList(res.data);
         })
     }
 
 
-    const modValidate = showModal ? <Modal showModal={showModal} setShowModal={setShowModal}/> : null;
+    const modValidate = showModal ? <Modal showModal={showModal} setShowModal={setShowModal} update={update} setUpdate={setUpdate}/> : null;
     
     return(
         <div className="main-background">
@@ -53,7 +53,7 @@ export default function Home(){
                     list.length!==0 ?
                     list.map((character)=>{
                         return(
-                            <Card element={character}/>
+                            <Card element={character} key={character.name}/>
                         )
                     })
                     :<div>Loading...</div>
