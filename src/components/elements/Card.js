@@ -1,6 +1,7 @@
 import React from "react";
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import '../../styles/card.scss';
 
 const griffindorBackground= "linear-gradient(135deg, #FF0000 0%, #FED482 100%)";
 const slytherinBackground=  "linear-gradient(135deg, #1C792B 0%, #82E95E 100%)";
@@ -28,11 +29,12 @@ export default function Card({element}){
                 color=griffindorBackground;
                 break;
         }
-
         return color;
     }
+
+
     return(
-        <div className="card">
+        <div className={element.alive ? "card" : "card-dead"}>
             <div className="card-photo-div" style={{background: getBackgroundColor(element.house.toUpperCase())}}>
                 <img className="card-photo-img" src={element.image} alt="integrante"/>
             </div>

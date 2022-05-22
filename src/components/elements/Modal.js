@@ -1,4 +1,7 @@
 import React,{useState,useEffect} from "react";
+import '../../styles/modal.scss';
+import {storage} from '../../data/firebase';
+
 import moment from 'moment';
 
 export default function Modal({showModal,setShowModal}){
