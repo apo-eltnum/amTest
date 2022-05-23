@@ -26,6 +26,8 @@ Asímismo, para la ejecución local, el siguiente comando está disponible para 
 ### `npm run run-all`
 
 
+Demo de la aplicación: https://evaluacion-am-mario.netlify.app
+
 ## ¿Qué es lo que te gustó de tu desarrollo?
 
 Personalmente me llamó la atención el hecho de poner a prueba mis habilidades como desarrollador front end. Fue un poco tedioso el definir estilos uno por uno, sin embargo, este aspecto lo hizo divertido. Me pareció agradable el poder generar un diseño responsivo para ciertos dispositivos, de tal manera que la distribución de componentes cambia según el dispositivo.
