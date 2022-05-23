@@ -8,39 +8,14 @@ $font-stack: 'Open Sans', sans-serif;
 $type-color: #999999;
 $header-color:#081F32 ;
 
-@mixin tablet {
-    @media only screen and (min-width: 768px) {
+  @mixin small {
+    @media only screen and (min-width: 300px) {
       @content;
     }
   }
-  
+
   @mixin desktop {
     @media only screen and (min-width: 992px){
-      @content;
-    }
-  }
-  
-  @mixin large {
-    @media only screen and (min-width: 1200px) {
-      @content;
-    }
-  }
-
-
-  @mixin small {
-    @media only screen and (min-width: 600px) {
-      @content;
-    }
-  }
-  
-  @mixin medium {
-    @media only screen and (min-width: 1024px) {
-      @content;
-    }
-  }
-  
-  @mixin large {
-    @media only screen and (min-width: 1440px) {
       @content;
     }
   }
@@ -107,18 +82,37 @@ $header-color:#081F32 ;
  }
 
 
- .options-div{
-     background-color: $secondary-color;
-     color: white;
-     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ .options-container{
+  background-color: $secondary-color;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+      @include small{
+        width: 200px;
+        height: 27px;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+    }
 
+     @include desktop{
+         width: 280px;
+         height: 36px;
+         align-items: center;
+         margin-left: 70vw;
+         position: relative;
+     }
+ }
+
+ .options-div{
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
      @include small{
         width: 200px;
         height: 27px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        position: fixed;
         bottom: 0;
     }
 
@@ -128,8 +122,6 @@ $header-color:#081F32 ;
          display: flex;
          flex-direction: row;
          align-items: center;
-         margin-left: 70vw;
-         position: relative;
      }
  }
 
@@ -169,6 +161,78 @@ $header-color:#081F32 ;
     }
 }
 
+.bookmark-list{
+  display: flex;
+  flex-direction: column;
+  background-color: $secondary-color;
+  color: white;
+  @include small{
+     width: 200px;
+     position: fixed;
+     bottom: 27px;
+  }
+
+  @include desktop{
+    width: 280px;
+    top: 10px;
+    position: relative;
+  }
+}
+
+.bookmark{
+  display: flex; 
+  flex-wrap: wrap;
+  @include small{
+    width: 200px;  
+ }
+ @include desktop{
+    width: 280px;
+ }
+}
+
+.bookmark-photo-div{
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  margin-top: 5px;  
+  margin-right: 1em;
+}
+
+.bookmark-name{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: $font-stack;
+    font-style: normal;
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
+    @include small{
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 25px;
+        
+     }
+
+     @include desktop{
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 25px;
+     }
+}
+
+
+.delete-icon{
+  @include small{
+      margin-left: 6px;
+      margin-top: 4px;
+      transform: scale(.8);
+  }
+  @include desktop{
+      margin-left: 7px;
+      margin-top: 6px;
+      transform: scale(1);
+  }
+}
 
  .card-container{
      display: flex;
@@ -199,7 +263,7 @@ $header-color:#081F32 ;
     font-style: normal;
     font-weight: 600;
      @include small{
-        width: 140px;
+        width: 120px;
         height: 43px; 
         font-size: 13px;
         line-height: 16px;
@@ -224,7 +288,7 @@ $header-color:#081F32 ;
  .btn-filter{
 
     @include small{
-        margin-right: 30px;
+        margin-right: 10px;
     } 
 
      @include desktop{

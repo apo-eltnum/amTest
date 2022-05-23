@@ -3,7 +3,10 @@ import React,{useState,useEffect} from "react";
 import Card from "../elements/Card";
 import Modal from "../elements/Modal";
 import OptionsBar from "../elements/OptionsBar";
+
 export default function Home(){
+    
+    
     const [showModal,setShowModal] = useState(false);
     const [list,setList] = useState([]);
     const [update, setUpdate] = useState(false);
@@ -34,7 +37,6 @@ export default function Home(){
             setList(res.data);
         })
     }
-
 
     const modValidate = showModal ? <Modal showModal={showModal} setShowModal={setShowModal} update={update} setUpdate={setUpdate}/> : null;
     
