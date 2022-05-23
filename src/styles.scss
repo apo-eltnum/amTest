@@ -107,7 +107,8 @@ $header-color:#081F32 ;
          height: 36px;
          align-items: center;
          margin-left: 70vw;
-         position: relative;
+         position: fixed;
+         top: 0;
      }
  }
 
@@ -173,25 +174,19 @@ $header-color:#081F32 ;
   overflow-y: auto;
   font-family: $font-stack;
   background-color: $secondary-color;
-  z-index: 1;
   color: white;
   @include small{
      width: 200px;
      position: fixed;
      bottom: 27px;
+     max-height: 25vw;
   }
 
   @include desktop{
     width: 280px;
-  }
-
-  @include small-height{
-    max-height: 25vw;
-  }
-
-  @include medium-height{
     max-height: 15vw;
-    top: 42px;
+    position: fixed;
+    top: 36px;
   }
 }
 
@@ -200,7 +195,7 @@ $header-color:#081F32 ;
   flex-wrap: wrap;
   align-items: center;
   @include small{
-    width: 180px;  
+    width: 190px;  
     font-weight: 600;
     font-size: 12px;
     line-height: 25px;

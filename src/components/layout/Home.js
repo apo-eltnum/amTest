@@ -10,6 +10,7 @@ export default function Home(){
     const [showModal,setShowModal] = useState(false);
     const [list,setList] = useState([]);
     const [update, setUpdate] = useState(false);
+
     useEffect(()=>{
         async function getAllData(){
             await axios.get(`${process.env.REACT_APP_API_URI}characters`).then(res=>{
@@ -21,18 +22,21 @@ export default function Home(){
 
 
     async function getStudents(){
+        setList([])
         await axios.get(`${process.env.REACT_APP_API_URI}characters?hogwartsStudent=true&hogwartsStaff=false`).then(res=>{
             setList(res.data);
         })
     }
 
     async function getStaff(){
+        setList([])
         await axios.get(`${process.env.REACT_APP_API_URI}characters?hogwartsStudent=false&hogwartsStaff=true`).then(res=>{
             setList(res.data);
         })
     }
 
     async function getNotAlive(){
+        setList([])
         await axios.get(`${process.env.REACT_APP_API_URI}characters?alive=false`).then(res=>{
             setList(res.data);
         })
