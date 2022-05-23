@@ -8,40 +8,40 @@ import moment from 'moment';
 const houseList=["Gryffindor","Slytherin","Hufflepuff","Ravenclaw"];
 
 export default function Modal({showModal,setShowModal,update,setUpdate}){
-    const [person,setPerson] = useState({name:'',dateOfBirth:new Date(),eyeColour:'',
+    const [character,setCharacter] = useState({name:'',dateOfBirth:new Date(),eyeColour:'',
                                          hairColour:'',gender:'male',hogwartsStudent:true,
                                          hogwartsStaff:false,alive:true,house:"Gryffindor"}) 
     const [image,setImage] = useState(null);
-    const [personType, setPersonType] = useState('student');
+    const [characterType, setCharacterType] = useState('student');
     const [showMessage,setShowMessage] = useState(false); 
     const [error,setError] = useState(false);
     const [message,setMessage] = useState(false); 
 
-    const {name,dateOfBirth,eyeColour,hairColour,gender,house} = person;
+    const {name,dateOfBirth,eyeColour,hairColour,gender,house} = character;
     const validRegex = /^[A-Za-z ]+$/
 
     function onChangeData(e){
         if(validRegex.test(e.target.value)||e.target.value===""||e.target.value===" "){
-            setPerson({...person,
+            setCharacter({...character,
                 [e.target.name] : e.target.value})
         }
     }
 
     function onChangeDate(e){
-        setPerson({...person,
+        setCharacter({...character,
             dateOfBirth: e.target.value})
     }
 
 
     function onChangeType(e)
     {
-        setPersonType(e.target.value);
+        setCharacterType(e.target.value);
         if(e.target.value==="student"){
-            setPerson({...person,
+            setCharacter({...character,
                 hogwartsStudent : true,
                 hogwartsStaff:false})
         }else{
-            setPerson({...person,
+            setCharacter({...character,
                 hogwartsStudent : false,
                 hogwartsStaff:true})
         }
@@ -101,7 +101,7 @@ export default function Modal({showModal,setShowModal,update,setUpdate}){
     async function postRequest(){
        let nombreFoto = image.name;
               //subimos la foto a firebase
-              var imgRef = ref(storage, `imagenPersona/${nombreFoto}`);
+              var imgRef = ref(storage, `imagencharactera/${nombreFoto}`);
               var url = ""
               url = await uploadBytes(imgRef,image).then(
                   uploadResult => {return getDownloadURL(uploadResult.ref)}).catch((error)=>{
@@ -109,22 +109,22 @@ export default function Modal({showModal,setShowModal,update,setUpdate}){
                 setShowMessage(true);
                 setError(true);});
                 if (url){
-                    let auxObj = person;
+                    let auxObj = character;
                   auxObj.dateOfBirth= moment(dateOfBirth).format('DD-MM-YYYY');
                   auxObj.image= url;
                   axios.post(`${process.env.REACT_APP_API_URI}characters`,auxObj).then(res=>{
-                        setMessage("Persona registrada exitosamente");
+                        setMessage("Personaje registrado exitosamente");
                         setShowMessage(true);
                         setError(false);
                         setUpdate(!update);
                         setImage(null);
-                        setPersonType('student');
-                        setPerson({...person,
+                        setCharacterType('student');
+                        setCharacter({...character,
                             name:'',dateOfBirth:new Date(),eyeColour:'',
                                          hairColour:'',gender:'male',hogwartsStudent:true,
                                          hogwartsStaff:false,alive:true,house:"Gryffindor"})
                 }).catch((error)=>{
-                    setMessage("Error al registrar Persona");
+                    setMessage("Error al registrar charactera");
                     setShowMessage(true);
                     setError(true);
                 })
@@ -142,7 +142,7 @@ export default function Modal({showModal,setShowModal,update,setUpdate}){
             <div className="modal-content">
                 <div className="modal-header">
                     <span className="close" onClick={()=> setShowModal(!showModal)}>&times;</span>
-                    <h2 className="card-info-header">Agregar nueva Persona</h2>
+                    <h2 className="card-info-header">Agregar nueva charactera</h2>
                     <div className="message" 
                     styles={{display:(showMessage ? 'block' : 'none'),
                         backgroundColor: (error ? '#E74C3C' : '#A9DFBF')}}>{message}</div>
@@ -193,19 +193,19 @@ export default function Modal({showModal,setShowModal,update,setUpdate}){
                         <legend className="label">POSICIÓN</legend>
                         <div className="radio-div">
                             <label className="radio-label">
-                                <input name="personType"
+                                <input name="characterType"
                                 type="radio"
                                 value="student"
-                                checked={personType === "student"}
+                                checked={characterType === "student"}
                                 onChange={onChangeType}
                                 />
                                 ESTUDIANTE
                             </label>
                             <label className="radio-label">
-                                <input name="personType"
+                                <input name="characterType"
                                 type="radio"
                                 value="staff"
-                                checked={personType === "staff"}
+                                checked={characterType === "staff"}
                                 onChange={onChangeType}
                                 />
                                 STAFF

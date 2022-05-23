@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Evaluación Front End
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Scripts Disponibles
 
-## Available Scripts
 
-In the project directory, you can run:
+Para instalar los node modules del proyecto es necesario ejecutar:
+
+### `npm install`
+
+Para correr el proyecto web es necesario ejecutar:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para correr el servidor json-server es necesario ejecutar:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm run init-api`
 
-### `npm test`
+Si se desea que la aplicación react funcione con el json-server de manera local, es necesario cambiar la variable REACT_APP_API_URI del archivo .env por http://localhost:8000/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run init-api`
 
-### `npm run build`
+Nota: El proyecto hace uso de la plataforma firebase para el almacenamiento de imagenes. Es por eso, que por motivos de seguridad; el archivo .env no está incluído en el repositorio. En caso de requerirlo, mande un mensaje al siguiente correo: marioapolinar98@gmail.com
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Asímismo, para la ejecución local, el siguiente comando está disponible para iniciar tanto el servidor como la aplicación de react
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run run-all`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## ¿Qué es lo que te gustó de tu desarrollo?
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Personalmente me llamó la atención el hecho de poner a prueba mis habilidades como desarrollador front end. Fue un poco tedioso el definir estilos uno por uno, sin embargo, este aspecto lo hizo divertido. Me pareció agradable el poder generar un diseño responsivo para ciertos dispositivos, de tal manera que la distribución de componentes cambia según el dispositivo.
+Por último, el hecho de implementar herramientas nuevas para mi, como lo es el caso de json-server y redux hizo que el desarrollo fuera retador y a su vez, mantuvo el interés por aprender estas dependencias.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Si hubieras tenido más tiempo ¿Qué hubieras mejorado o qué más hubieras hecho?
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+A mi parecer, me hubiera gustado implementar el diseño responsivo para más dispositivos, y por ende, más resoluciones de pantalla, ya que de momento, sólo fue implementado para computadora y para celular. Además, hubiese sido lo más óptimo pulir ciertos estilos de los componentes, como lo es el caso del modal y alguna información de los cards en resoluciones pequeñas.
+Por último, otro requerimiento a considerar pudo haber sido la posibilidad de editar los datos de cada personaje, de manera que se pudiera actualizar el estatus del mismo.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Pain point durante el desarrollo
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La problemática más relevante presentada durante el desarrollo fue la implementación de redux para guardar los personajes favoritos. Personalmente tenía poca experiencia con el uso de redux, por lo que inicialmente, la integración de esta herramienta resultó un poco confusa. No obstante, la implementación se pudo resolver viendo unos cuantos tutoriales y leyendo la documentación.
