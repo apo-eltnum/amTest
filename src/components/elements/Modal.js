@@ -142,7 +142,7 @@ export default function Modal({showModal,setShowModal,update,setUpdate}){
             <div className="modal-content">
                 <div className="modal-header">
                     <span className="close" onClick={()=> setShowModal(!showModal)}>&times;</span>
-                    <h2 className="card-info-header">Agregar nueva charactera</h2>
+                    <h2 className="card-info-header">Agregar nuevo personaje</h2>
                     <div className="message" 
                     styles={{display:(showMessage ? 'block' : 'none'),
                         backgroundColor: (error ? '#E74C3C' : '#A9DFBF')}}>{message}</div>
