@@ -8,44 +8,24 @@ $font-stack: 'Open Sans', sans-serif;
 $type-color: #999999;
 $header-color:#081F32 ;
 
-
-@mixin tablet {
-    @media only screen and (min-width: 768px) {
+  @mixin small {
+    @media only screen and (min-width: 300px) {
       @content;
     }
   }
-  
+
   @mixin desktop {
     @media only screen and (min-width: 992px){
       @content;
     }
   }
-  
-  @mixin large {
-    @media only screen and (min-width: 1200px) {
-      @content;
-    }
-  }
 
 
-  @mixin small {
-    @media only screen and (min-width: 600px) {
+  @mixin small-height {
+    @media only screen and (min-height: 300px) {
       @content;
     }
   }
-  
-  @mixin medium {
-    @media only screen and (min-width: 1024px) {
-      @content;
-    }
-  }
-  
-  @mixin large {
-    @media only screen and (min-width: 1440px) {
-      @content;
-    }
-  }
-
 
   @mixin medium-height {
     @media only screen and (min-height: 720px) {
@@ -108,18 +88,37 @@ $header-color:#081F32 ;
  }
 
 
- .options-div{
-     background-color: $secondary-color;
-     color: white;
-     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ .options-container{
+  background-color: $secondary-color;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+      @include small{
+        width: 200px;
+        height: 27px;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+    }
 
+     @include desktop{
+         width: 280px;
+         height: 36px;
+         align-items: center;
+         margin-left: 70vw;
+         position: relative;
+     }
+ }
+
+ .options-div{
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
      @include small{
         width: 200px;
         height: 27px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        position: fixed;
         bottom: 0;
     }
 
@@ -129,8 +128,6 @@ $header-color:#081F32 ;
          display: flex;
          flex-direction: row;
          align-items: center;
-         margin-left: 70vw;
-         position: relative;
      }
  }
 
@@ -170,6 +167,92 @@ $header-color:#081F32 ;
     }
 }
 
+.bookmark-list{
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  font-family: $font-stack;
+  background-color: $secondary-color;
+  z-index: 1;
+  color: white;
+  @include small{
+     width: 200px;
+     position: fixed;
+     bottom: 27px;
+  }
+
+  @include desktop{
+    width: 280px;
+  }
+
+  @include small-height{
+    max-height: 25vw;
+  }
+
+  @include medium-height{
+    max-height: 15vw;
+    top: 42px;
+  }
+}
+
+.bookmark{
+  display: flex; 
+  flex-wrap: wrap;
+  align-items: center;
+  @include small{
+    width: 180px;  
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 25px;
+ }
+ @include desktop{
+    width: 260px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 25px;
+ }
+}
+
+.bookmark-photo-div{
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  margin-top: 5px;  
+  margin-right: 1em;
+}
+
+.bookmark-name{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: $font-stack;
+    font-style: normal;
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
+    @include small{
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 25px;
+     }
+
+     @include desktop{
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 25px;
+     }
+}
+
+
+.delete-icon{
+  @include small{
+      margin-left: 6px;
+      transform: scale(.8);
+  }
+  @include desktop{
+      margin-left: 7px;
+      transform: scale(1);
+  }
+}
 
  .card-container{
      display: flex;
@@ -181,183 +264,6 @@ $header-color:#081F32 ;
      }
  }
 
-
-.card{
-   background: $card-background;
-   margin-right: 30px;
-   margin-bottom: 20px;
-   @include small{
-    width: 140px;
-    height: 181px; 
-    display: flex;
-    flex-direction: column;
-    background: $card-background;
-    border: 1px solid #000000;
-    border-radius: 5px 0px 0px 5px;
-   } 
-
-   @include desktop{
-    width: 515px;
-    height: 265px; 
-    border: 1px solid #000000;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: row;
- } 
-}
-
-.card-photo-div{
-
-    @include small{
-     width: 140px;
-     height: 87px; 
-     text-align: center;
-     border-radius: 5px 0px 0px 5px;
-    } 
-
-    @include desktop{
-        width: 210px;
-        height: 265px; 
-        text-align: center;
-        border-radius: 16px 0px 0px 16px;
-     } 
- }
-
- .card-photo-img{
-    border-radius: 50%;
-     @include small{
-        width: 70px;
-        height: 70px;
-        margin-top: 10px;
-     } 
-
-     @include desktop{
-        width: 165px;
-        height: 165px;
-        margin-top: 50px;
-     } 
- }
-
-
- .card-info-div{
-     @include small{
-        height: 94px;
-        align-items: center;
-        position: relative;
-     } 
-
-     @include desktop{
-        width: 305px;
-        display: flex;
-        flex-direction: column;
-     } 
- }
-
-
- .card-info-type{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-     @include small{
-        text-align: center;
-        margin-top: 22px;
-        font-family: $font-stack;
-        font-style: normal;
-        font-size: 11px;
-        font-weight: 600;
-        color: $type-color;
-       position: absolute;
-        bottom:5px;
-     }
-     
-     @include desktop{
-        margin-left: 25;
-        top: 5px;
-        font-family: $font-stack;
-        font-style: normal;
-        font-size: 14px;
-        font-weight: 600;
-        color: $type-color;
-        position: relative;
-     } 
-
- }
-
- .bookmark-icon{
-    @include small{
-        margin-left: 6px;
-        transform: scale(1);
-    }
-    @include desktop{
-        margin-left: 70px;
-        transform: scale(1.5);
-    }
- }
-
- .bookmark-icon-selected{
-    @include small{
-        margin-left: 6px;
-        transform: scale(1);
-        color: #000000;
-    }
-    @include desktop{
-        margin-left: 70px;
-        transform: scale(1.5);
-        color: #000000;
-    }
- }
-
- 
- .card-info-header{
-     @include small{
-        top: 64px;
-        text-align: center;
-        font-family: $font-stack;
-        font-style: normal;
-        font-size: 18px;
-        font-weight: 600;
-     } 
-
-     @include desktop{
-        margin-left: 25;
-        top: 64px;
-        font-family: $font-stack;
-        font-style: normal;
-        font-size: 30px;
-        font-weight: 600;
-     } 
- }
-
-
- .card-data-div{
-
-    @include small{
-        width: 140px;
-        height: 90px;
-    } 
-
-    @include desktop{
-        width: 184px;
-        height: 112px;
-        display: flex;
-        flex-direction: column;
-        top: 131px; 
-        font-family: $font-stack;
-        size: 18px;
-        font-weight: 400;
-        margin-left: 25;
-     } 
- }
- 
- .data-label{
-    @include small{
-        display: none;
-    }
-    @include desktop{
-        margin-bottom: 10px;
-        display: block;
-    } 
- }
 
  .button-div{
     @include small{
@@ -377,7 +283,7 @@ $header-color:#081F32 ;
     font-style: normal;
     font-weight: 600;
      @include small{
-        width: 140px;
+        width: 120px;
         height: 43px; 
         font-size: 13px;
         line-height: 16px;
@@ -402,52 +308,14 @@ $header-color:#081F32 ;
  .btn-filter{
 
     @include small{
-        margin-right: 30px;
+        margin-right: 10px;
     } 
 
      @include desktop{
-        margin-right: 110px;
+        margin-right: 50px;
      } 
  }
 
- #myModal{
-     display: block;
- }
 
- .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
 
 

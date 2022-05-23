@@ -1,6 +1,9 @@
 import React from "react";
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import { addBookmark,deleteBookmark } from "../../redux/actions";
+import {useDispatch,useSelector} from 'react-redux';
+import '../../styles/card.scss';
 
 const griffindorBackground= "linear-gradient(135deg, #FF0000 0%, #FED482 100%)";
 const slytherinBackground=  "linear-gradient(135deg, #1C792B 0%, #82E95E 100%)";
@@ -8,6 +11,8 @@ const ravenclawBackground=  "linear-gradient(135deg, #0597B7 0%, #66D1FF 100%)";
 const hufflepuffBackground= "linear-gradient(135deg, #FFC700 0%, #FFF388 100%)";
 
 export default function Card({element}){
+    const bookmarks = useSelector((state)=> state);
+    const dispatch = useDispatch();
 
     function getBackgroundColor(house){
         let color=""
@@ -28,11 +33,20 @@ export default function Card({element}){
                 color=griffindorBackground;
                 break;
         }
-
         return color;
     }
+
+
+    function addDelBookmark(element){
+       if(bookmarks.find((bookmark)=>bookmark.name === element.name)){
+           dispatch(deleteBookmark(element))
+       }else{
+           dispatch(addBookmark(element))
+       }
+    }
+
     return(
-        <div className="card">
+        <div className={element.alive ? "card" : "card-dead"}>
             <div className="card-photo-div" style={{background: getBackgroundColor(element.house.toUpperCase())}}>
                 <img className="card-photo-img" src={element.image} alt="integrante"/>
             </div>
@@ -42,7 +56,9 @@ export default function Card({element}){
                         /
                         {element.hogwartsStudent ? " ESTUDIANTE"
                         :" STAFF"}
-                    <BookmarkBorderIcon className="bookmark-icon-selected"/>
+                    {bookmarks.find((bookmark)=>bookmark.name === element.name) ? 
+                      <BookmarkIcon className="bookmark-icon-selected" onClick={()=>{addDelBookmark(element)}}/>
+                    : <BookmarkBorderIcon className="bookmark-icon" onClick={()=>{addDelBookmark(element)}}/>}
                 </div>
                 <p className="card-info-header">{element.name}</p>
                 <div className="card-data-div">
