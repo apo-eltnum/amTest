@@ -32,7 +32,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "run-all" : "concurrently  \" npm start\" \"npm:init-api\"",
-    "init-api": "json-server --watch src/data/db.json --port 5000"
+    "init-api": "json-server --watch db.json --port 8000",
+    "init-server" : "node server.js"
   },
   "eslintConfig": {
     "extends": [
