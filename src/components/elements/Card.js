@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { addBookmark,deleteBookmark } from "../../redux/actions";
