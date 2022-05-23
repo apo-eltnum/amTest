@@ -60,7 +60,10 @@ export default function Card({element}){
                       <BookmarkIcon className="bookmark-icon-selected" onClick={()=>{addDelBookmark(element)}}/>
                     : <BookmarkBorderIcon className="bookmark-icon" onClick={()=>{addDelBookmark(element)}}/>}
                 </div>
-                <p className="card-info-header">{element.name}</p>
+                <p className="card-info-header">{
+                element.name.length>24 ? 
+                element.name.substring(0,22)
+                :element.name}</p>
                 <div className="card-data-div">
                     <span className="data-label"><strong>{"Cumpleaños "}</strong>{element.dateOfBirth}</span>
                     <span className="data-label"><strong>{"Género "}</strong>{element.gender}</span>
