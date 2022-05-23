@@ -38,4 +38,4 @@ Por último, otro requerimiento a considerar pudo haber sido la posibilidad de e
 
 ### Pain point durante el desarrollo
 
-La problemática más relevante presentada durante el desarrollo fue la implementación de redux para guardar los personajes favoritos. Personalmente tenía poca experiencia con el uso de redux, por lo que inicialmente, la integración de esta herramienta resultó un poco confusa. No obstante, la implementación se pudo resolver viendo unos cuantos tutoriales y leyendo la documentación.
+La problemática más relevante presentada durante el desarrollo fue la implementación de redux para guardar los personajes favoritos. Personalmente tenía poca experiencia con el uso de redux, por lo que inicialmente, la integración de esta herramienta resultó un poco confusa. No obstante, la implementación se pudo resolver viendo unos cuantos tutoriales y leyendo la documentación. 
