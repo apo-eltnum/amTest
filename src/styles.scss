@@ -171,9 +171,10 @@ $header-color:#081F32 ;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  font-family: $font-stack;
   background-color: $secondary-color;
+  z-index: 1;
   color: white;
-  min-height: 20px;
   @include small{
      width: 200px;
      position: fixed;
@@ -182,8 +183,6 @@ $header-color:#081F32 ;
 
   @include desktop{
     width: 280px;
-    top: 10px;
-    position: relative;
   }
 
   @include small-height{
@@ -191,7 +190,8 @@ $header-color:#081F32 ;
   }
 
   @include medium-height{
-    max-height: 70vw;
+    max-height: 15vw;
+    top: 42px;
   }
 }
 
@@ -200,13 +200,13 @@ $header-color:#081F32 ;
   flex-wrap: wrap;
   align-items: center;
   @include small{
-    width: 200px;  
+    width: 180px;  
     font-weight: 600;
     font-size: 12px;
     line-height: 25px;
  }
  @include desktop{
-    width: 280px;
+    width: 260px;
     font-weight: 600;
     font-size: 14px;
     line-height: 25px;
