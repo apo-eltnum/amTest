@@ -17,6 +17,7 @@ export default function Home(){
                 setList(res.data);
             })
         }
+        setList([]);
         getAllData();
     },[update])
 
